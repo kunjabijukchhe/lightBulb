@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import pyrebase
+import datetime
 firebaseConfig = {
     'apiKey': "AIzaSyDj-epa6wHzWuxTqKIINk2d1zaE0RoyQD4",
     'authDomain': "apps-adccc.firebaseapp.com",
@@ -20,7 +21,8 @@ firebase=pyrebase.initialize_app(firebaseConfig);
 db=firebase.database()
 
 def update(request):
-    a=db.child('bulb').update({'lightOne':'False'})
+    x = datetime.date.today()
+    a = x.strftime("%b %d, %Y")
     return render(request,'dashboardOne.html',{'a':a})
 
 @login_required
@@ -38,6 +40,7 @@ def login_view(request):
             if user.is_active:
                 login(request,user)
                 return HttpResponseRedirect(reverse('lightApp:button'))
+                
             else:
                 return HttpResponse('Account is not Active')
         else:
@@ -54,5 +57,9 @@ def logout_view(request):
    
 @login_required
 def dashboard(request):
-    return render(request,'dashboardOne.html')
+    x = datetime.datetime.now()
+    a = x.strftime("%a, %b %d %Y")
+    b = x.strftime("%I:%M %p")
+    return render(request,'dashboardOne.html',{'a':a,'b':b})
     # return render(request,'dashboard.html')
+

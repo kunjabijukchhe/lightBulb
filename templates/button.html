@@ -1,57 +1,189 @@
+{% load static %}
 <!DOCTYPE html>
-{% extends 'base.html' %}
-{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">IOT Wed App</a>
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav navbar-nav ml-auto">
+      
+              <li><a class="nav-link" href="{% url 'lightApp:button' %}">HOME</a></li>
+              <li><a class="nav-link" href="{% url 'lightApp:dashboard' %}">Dashboard</a></li> 
+              <li><a class="nav-link" href="{% url 'lightApp:logout' %}">Logout</a></li>     
+  
+         </ul>
+        </div>
+      </nav>
+      <div class="container">
 
           <div class="jumbotron">
             <table>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light One <span class="badge badge-pill badge-light" onclick="lightControlOne()"></span></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block" onclick="TrueOne()">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block" onclick="FalseOne()">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Two <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Three <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Four <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Five <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Six <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Seven <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
+                  <button type="button" class="btn btn-primary btn-lg btn-block">Light Eight <span class="badge badge-pill badge-light">on</span></button>
 
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-lg btn-block">Trun On</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-lg btn-block">Trun Off</button>
                 </td>
               </tr>
             </table>
           </div>
 
-{% endblock %}
+        </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
+    
+    <script>
+      var firebaseConfig = {
+      apiKey: "AIzaSyBNijbPF_PI-DlfmVnxMEApV-bSzKA3hBU",
+      authDomain: "brainycube-affd8.firebaseapp.com",
+      databaseURL: "https://brainycube-affd8-default-rtdb.firebaseio.com",
+      projectId: "brainycube-affd8",
+      storageBucket: "brainycube-affd8.appspot.com",
+      messagingSenderId: "648752046323",
+      appId: "1:648752046323:web:c77a6417900849ba9cd786",
+      measurementId: "G-R91T896V3Q"
+    };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var db=firebase.database().ref();
+
+      function TrueOne() {
+        db.child('bulb').update({'lightOne':true});
+        console.log(db.child('bulb').update({'lightOne':true}));
+      }
+      function FalseOne() {
+        db.child('bulb').update({'lightOne':false});
+        console.log(db.child('bulb').update({'lightOne':false}));
+      }
+
+      function lightControlOne() {
+        db.once('value')
+        .then(function(snapshot) {
+          var childKey = snapshot.child('bulb').child("lightOne").val(); 
+          console.log(childKey);
+          if(childKey == false){
+            return "Off"
+          }
+          else{
+            return "On"
+          }
+    });
+  }
+
+</script>
+</body>
+</html>
